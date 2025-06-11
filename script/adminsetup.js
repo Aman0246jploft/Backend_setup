@@ -1,0 +1,25 @@
+require('dotenv').config();
+const { User } = require('../db');
+const { roleId } = require('../utils/globalFunction');
+adminCreate = async () => {
+    let data = {
+        firstName: "Super",
+        lastName: "Admin",
+        email: "superadmin@mailinator.com",
+        password: "123456",
+        phoneNumber: "1234567890",
+        roleId: roleId.SUPER_ADMIN,
+    }
+    try {
+        let testAdmin = new User(data);
+        let res = await testAdmin.save();
+        console.log("res ", res);
+        process.exit(1)
+    } catch (error) {
+        console.log(error);
+    }
+}
+(async () => {
+    await adminCreate();
+})();
+
