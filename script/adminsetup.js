@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { User } = require('../db');
-const { roleId } = require('../utils/globalFunction');
+const { roleId } = require('../utils/Role');
+
 adminCreate = async () => {
     let data = {
         firstName: "Super",

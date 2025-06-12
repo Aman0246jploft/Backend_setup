@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const { roleId } = require("../../utils/globalFunction");
 const bcrypt = require('bcryptjs');
+const { roleId } = require("../../utils/Role");
 
 const Schema = mongoose.Schema;
 

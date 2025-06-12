@@ -96,7 +96,6 @@ const setKeyNoTime = async (key, value) => {
     try {
         await client.set(key, value);
         return resultDb(CONSTANTS.SUCCESS)
-        return resultDb(CONSTANTS.SUCCESS)
     } catch (error) {
         // console.error("Unable to set key no time in redis, Query", error);
         return resultDb(CONSTANTS.SERVER_ERROR, CONSTANTS.DATA_NULL)

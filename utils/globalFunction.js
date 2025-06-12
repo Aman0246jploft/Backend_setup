@@ -48,10 +48,6 @@ function generateOTP(length = CONSTANTS.OTP_LENGTH) {
 }
 
 
-const roleId = {
-    SUPER_ADMIN: 1,
-    USER: 2
-}
 
 
 async function verifyPassword(hash, password) {
@@ -80,7 +76,6 @@ module.exports = {
     apiSuccessRes,
     apiErrorRes,
     generateKey,
-    roleId,
     verifyPassword,
     toObjectId
 };
