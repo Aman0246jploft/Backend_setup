@@ -28,11 +28,21 @@ client.on('error', (err) => console.error('Redis Client Error:', err));
 publisher.on('error', (err) => console.error('Redis Publisher Error:', err));
 subscriber.on('error', (err) => console.error('Redis Subscriber Error:', err));
 
+
 // Connect all clients
 (async () => {
-    await client.connect();
-    await publisher.connect();
-    await subscriber.connect();
+    try {
+        await client.connect();
+        console.log("Redis client connected");
+
+        await publisher.connect();
+        console.log("Redis publisher connected");
+
+        await subscriber.connect();
+        console.log("Redis subscriber connected");
+    } catch (err) {
+        console.error("Redis connection error:", err);
+    }
 })();
 
 // Pub/Sub Functions
