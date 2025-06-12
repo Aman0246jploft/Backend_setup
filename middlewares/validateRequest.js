@@ -18,6 +18,7 @@ const validateRequest = (schema) => (req, res, next) => {
   const data = req.body || {}; // 👈 ensures it's at least an object
   const { error } = schema.validate(data, { abortEarly: true });
 
+  console.log("error", error)
   if (error) {
     const message = error.details[0].message.replace(/"/g, '');
     return apiErrorRes(
