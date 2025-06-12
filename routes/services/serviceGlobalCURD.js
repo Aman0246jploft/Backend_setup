@@ -1,4 +1,3 @@
-const { default: mongoose } = require("mongoose");
 const { SERVER_ERROR, DATA_NULL, SUCCESS, NOT_FOUND } = require("../../utils/constants");
 const { resultDb, toObjectId } = require("../../utils/globalFunction");
 
@@ -201,6 +200,10 @@ const getAllDocuments = async (
         } else if (andConditions.length > 1) {
             finalQuery = { $and: andConditions };
         }
+
+
+        console.log('finalQuery1',finalQuery,options)
+
 
         // Query builder
         let queryBuilder = Model.find(finalQuery)
