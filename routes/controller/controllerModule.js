@@ -8,13 +8,13 @@ const { Module } = require('../../db');
 const validateRequest = require('../../middlewares/validateRequest');
 const { moduleSchema } = require('../services/validations/moduleValidation');
 const { moduleSchemaForId } = require('../services/validations/globalCURDValidation');
+const perApiLimiter = require('../../middlewares/rateLimiter');
 
-// validateRequest(moduleSchema),
-router.post('/create', upload.none(), globalCrudController.create(Module));
-router.post('/getById', upload.none(),validateRequest(moduleSchemaForId) ,globalCrudController.getById(Module));
-router.post('/update', upload.none(), globalCrudController.update(Module));
-router.post('/harddelete', upload.none(), globalCrudController.hardDelete(Module));
-router.post('/softDelete', upload.none(), globalCrudController.softDelete(Module));
-router.post('/getList', globalCrudController.getList(Module));
+router.post('/create', perApiLimiter(), upload.none(), validateRequest(moduleSchema), globalCrudController.create(Module));
+router.post('/getById', perApiLimiter(), upload.none(), validateRequest(moduleSchemaForId), globalCrudController.getById(Module));
+router.post('/update', perApiLimiter(), upload.none(), globalCrudController.update(Module));
+router.post('/harddelete', perApiLimiter(), upload.none(), validateRequest(moduleSchemaForId), globalCrudController.hardDelete(Module));
+router.post('/softDelete', perApiLimiter(), upload.none(), validateRequest(moduleSchemaForId), globalCrudController.softDelete(Module));
+router.get('/getList', perApiLimiter(), globalCrudController.getList(Module));
 
 module.exports = router;

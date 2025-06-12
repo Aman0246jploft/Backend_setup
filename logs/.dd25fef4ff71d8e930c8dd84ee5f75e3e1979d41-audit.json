@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 1
+    },
+    "auditLog": "/home/jploft-php/Desktop/Backend/logs/.dd25fef4ff71d8e930c8dd84ee5f75e3e1979d41-audit.json",
+    "files": [
+        {
+            "date": 1749706903952,
+            "name": "/home/jploft-php/Desktop/Backend/logs/2025-06-12.log",
+            "hash": "c2730f62bacca49b3b2414168f0850d8a80c31b2d4dc5bde66d212d99b504481"
+        }
+    ],
+    "hashType": "sha256"
+}

@@ -64,6 +64,16 @@ async function verifyPassword(hash, password) {
     }
 }
 
+const toObjectId = (id) => {
+    try {
+        return new mongoose.Types.ObjectId(id);
+    } catch (err) {
+        return null; // or throw, depending on how you want to handle invalid IDs
+    }
+};
+
+
+
 module.exports = {
     resultDb,
     generateOTP,
@@ -71,5 +81,6 @@ module.exports = {
     apiErrorRes,
     generateKey,
     roleId,
-    verifyPassword
+    verifyPassword,
+    toObjectId
 };

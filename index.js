@@ -6,6 +6,7 @@ const controllers = require('./routes/index')
 const app = express();
 const http = require('http');
 const jwtVerification = require('./middlewares/jwtVerification');
+const requestLogger = require('./middlewares/requestLogger');
 const server = http.createServer(app); // Add this
 app.use(cors());
 const { PORT, API_END_POINT_V1 } = process.env;
@@ -13,6 +14,7 @@ app.use(express.json({ limit: '5mb' }));
 app.use(express.urlencoded({ extended: true, limit: '5mb' }));
 app.use(express.json());
 app.use(jwtVerification())
+app.use(requestLogger);
 
 // Loop through the controllers and register routes
 for (const [route, controller] of Object.entries(controllers)) {

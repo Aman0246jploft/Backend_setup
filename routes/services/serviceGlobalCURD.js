@@ -1,5 +1,6 @@
+const { default: mongoose } = require("mongoose");
 const { SERVER_ERROR, DATA_NULL, SUCCESS, NOT_FOUND } = require("../../utils/constants");
-const { resultDb } = require("../../utils/globalFunction");
+const { resultDb, toObjectId } = require("../../utils/globalFunction");
 
 // const createDocument = async (Model, data) => {
 //     try {
@@ -51,11 +52,9 @@ const createDocument = async (Model, data) => {
 
 
 
-
-
 const getDocumentById = async (Model, id) => {
     try {
-        const doc = await Model.findById(id);
+        const doc = await Model.findOne({ _id: toObjectId(id), isDeleted: false });
         if (!doc) return resultDb(NOT_FOUND, DATA_NULL);
         return resultDb(SUCCESS, doc);
     } catch (err) {
@@ -65,9 +64,9 @@ const getDocumentById = async (Model, id) => {
 };
 
 
-const getDocumentByQuery = async (Model, id) => {
+const getDocumentByQuery = async (Model, data) => {
     try {
-        const doc = await Model.findOne(id);
+        const doc = await Model.findOne({ ...data, isDeleted: false });
         if (!doc) return resultDb(NOT_FOUND, DATA_NULL);
         return resultDb(SUCCESS, doc);
     } catch (err) {

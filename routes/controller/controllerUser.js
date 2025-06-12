@@ -87,8 +87,6 @@ const login = async (req, res) => {
     }
 };
 
-
-
 router.post('/login', upload.none(), validateRequest(loginSchema), login);
 
 router.post('/create', upload.none(), globalCrudController.create(User));
