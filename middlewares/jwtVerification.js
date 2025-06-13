@@ -9,6 +9,13 @@ const CONSTANTS = require('../utils/constants');
 const publicRoutes = [
     '/api/v1/auth/register',
     '/api/v1/user/login',
+    '/api/v1/user/requestOtp',
+    '/api/v1/user/verifyOtp',
+    '/api/v1/user/saveEmailPassword',
+    '/api/v1/user/saveCategories',
+    '/api/v1/user/completeRegistration',
+
+
 ];
 
 function jwtVerification() {

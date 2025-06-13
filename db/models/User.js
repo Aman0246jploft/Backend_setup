@@ -5,15 +5,8 @@ const { roleId } = require("../../utils/Role");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    firstName: {
+    userName: {
         type: String,
-        required: true,
-        trim: true
-    },
-    lastName: {
-        type: String,
-        required: true,
-        trim: true
     },
     email: {
         type: String,
@@ -23,35 +16,51 @@ const UserSchema = new Schema({
         lowercase: true,
         index: true
     },
+    profileImage: {
+        type: String,
+    },
     password: {
         type: String,
         required: true
     },
-    role: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Role",
-        validate: {
-            validator: function (value) {
-                if (this.roleId === roleId.SUPER_ADMIN) {
-                    return true;
-                }
-                return !!value;
-            },
-            message: "Role is required unless roleId is SUPER_ADMIN"
-        }
-    },
+    // role: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: "Role",
+    //     validate: {
+    //         validator: function (value) {
+    //             if (this.roleId === roleId.SUPER_ADMIN) {
+    //                 return true;
+    //             }
+    //             return !!value;
+    //         },
+    //         message: "Role is required unless roleId is SUPER_ADMIN"
+    //     }
+    // },
     roleId: {
         type: Number,
         enum: Object.values(roleId),
         default: roleId.USER,
         index: true
     },
+    categories: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Category"
+    }],
     fmcToken: {
         type: String,
     },
     phoneNumber: {
         type: String,
         trim: true
+    },
+    dob: {
+        type: Date
+    },
+    gender: {
+        type: String,
+    },
+    language: {
+        type: String
     },
     isDisable: {
         type: Boolean,

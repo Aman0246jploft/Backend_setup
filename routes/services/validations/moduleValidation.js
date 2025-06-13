@@ -17,7 +17,6 @@ const moduleSchema = Joi.object({
 
 
 
-moduleSchema
 module.exports = {
   moduleSchema
 };

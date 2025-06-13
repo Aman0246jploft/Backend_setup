@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const { DB_STRING } = process.env;
 
 const startTime = Date.now();
@@ -13,9 +14,10 @@ mongoose.connect(DB_STRING)
     });
 
 module.exports = {
-    AppSetting: require('./models/AppSetting'),
     User: require("./models/User"),
+    Category:require('./models/Category'),
     //rbac---->
+    AppSetting: require('./models/AppSetting'),
     Module: require("./models/Rbac/Module"),
     Role: require("./models/Rbac/Role"),
     ModulePermission: require("./models/Rbac/ModulePermission"),
