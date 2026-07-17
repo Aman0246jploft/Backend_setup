@@ -14,12 +14,5 @@ mongoose.connect(DB_STRING)
     });
 
 module.exports = {
-    User: require("./models/User"),
-    Category:require('./models/Category'),
-    //rbac---->
-    AppSetting: require('./models/AppSetting'),
-    Module: require("./models/Rbac/Module"),
-    Role: require("./models/Rbac/Role"),
-    ModulePermission: require("./models/Rbac/ModulePermission"),
-    //rbac---->
+    User: require("./models/User")
 };
